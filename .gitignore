@@ -1,0 +1,70 @@
+# --- A repository about not leaking secrets must not leak any of its own. ---
+
+# age / SOPS key material  (NEVER commit private keys)
+*.agekey
+*.age.key
+age.key
+keys.txt
+key.txt
+*.pgp
+*.gpg
+!*.pub
+
+# Decrypted output of encrypted files (belt-and-suspenders naming conventions)
+*.dec
+*.dec.*
+*.decrypted
+*.decrypted.*
+*.plain.yaml
+*.plaintext.*
+
+# Environment / dotenv
+.env
+.env.*
+!.env.example
+
+# Kubernetes access
+kubeconfig
+*.kubeconfig
+.kube/
+
+# Terraform (state and tfvars routinely contain secrets)
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+.terraform/
+.terraform.lock.hcl
+
+# Raw, unencrypted secret manifests that should never be committed
+secret.yaml
+secrets.yaml
+*-secret.yaml
+*-secrets.yaml
+# (encrypted equivalents are committed on purpose, e.g. secret.sops.yaml)
+!*.sops.yaml
+!*.sops.*
+
+# Scanner output (gitleaks reports embed the matched secret material)
+gitleaks-report.*
+*.gitleaks.json
+inventory-report.*
+
+# Packaged Helm charts
+*.tgz
+charts/*.tgz
+
+# Python (tooling)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
