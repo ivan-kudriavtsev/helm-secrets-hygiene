@@ -1,4 +1,4 @@
-# helm-secret-hygiene
+# helm-secrets-hygiene
 
 A prevention-first method for keeping plaintext secrets out of multi-tenant Helm
 delivery - and for remediating the ones already committed across a fleet of
